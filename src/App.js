@@ -78,8 +78,6 @@ const App = () => {
     if (data) {
       return (
         <React.Fragment>
-          <h1>{locData.lat}</h1>
-          <h1>{locData.lon}</h1>
           <div className="wrapper">
             <div className="content-left">
               <div>
