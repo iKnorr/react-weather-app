@@ -5,6 +5,7 @@ import api from './api';
 import dayImage from './images/day2.jpg';
 import nightImage from './images/night3.jpg';
 import { ImSpinner2 } from 'react-icons/im';
+// import CurrentWeather from './components/CurrentWeather';
 import './App.css';
 
 const weekdays = [
@@ -20,36 +21,39 @@ const weekdays = [
 const App = () => {
   const [data, setData] = useState({});
   const [forecastData, setForecastData] = useState([]);
-  const [current, setCurrent] = useState({});
-  const [currentDate, setCurrentDate] = useState('');
-  const [weekday, setWeekday] = useState('');
-  const [currentCondition, setCurrentCondition] = useState({});
   const [error, setError] = useState(null);
-  const [locData, setLocData] = useState({});
 
   const settingState = response => {
-    setData(response.data);
-    setCurrent(response.data.current);
-    setCurrentDate(
-      new Date(response.data.current.last_updated)
+    setData({
+      city: response.location.name,
+      country: response.location.country,
+      temp: response.current.temp_c,
+      feelslike: response.current.feelslike_c,
+      humidity: response.current.humidity,
+      precip: response.current.precip_mm,
+      wind: response.current.wind_kph,
+      date: new Date(response.current.last_updated)
         .toLocaleTimeString()
-        .slice(0, 5)
-    );
-    setWeekday(weekdays[new Date(response.data.current.last_updated).getDay()]);
-    setCurrentCondition(response.data.current.condition);
-    setForecastData(response.data.forecast.forecastday);
+        .slice(0, 5),
+      currentCondition: response.current.condition.text,
+      icon: response.current.condition.icon,
+      code: response.current.condition.code,
+      weekday: weekdays[new Date(response.current.last_updated).getDay()],
+      isDay: response.current.is_day,
+    });
+    setForecastData(response.forecast.forecastday);
   };
 
   useEffect(() => {
     try {
-      const fetchLocation = async () => {
+      const localWeather = async () => {
         const responseIP = await api.get(`/ip.json?&q=auto:ip`);
         const response = await api.get(
           `/forecast.json?&q=${responseIP.data.city}&days=3`
         );
-        settingState(response);
+        settingState(response.data);
       };
-      fetchLocation();
+      localWeather();
     } catch (err) {
       setError(err);
     }
@@ -59,7 +63,7 @@ const App = () => {
     try {
       const response = await api.get(`/forecast.json?&q=${loc}&days=3`);
       console.log(response.data);
-      settingState(response);
+      settingState(response.data);
       setError(null);
     } catch (err) {
       setError(err);
@@ -73,34 +77,32 @@ const App = () => {
           <div className="wrapper">
             <div className="content-left">
               <div>
-                <h1 className="temperature">{Math.round(current.temp_c)}°C</h1>
+                <h1 className="temperature">{Math.round(data.temp)}°C</h1>
                 <div className="info-wrapper">
                   <span className="info feels-like">
-                    Feels like: {Math.round(current.feelslike_c)}°C
+                    Feels like: {Math.round(data.feelslike)}°C
                   </span>
                   <span className="info cloud">
-                    Precipitation: {current.precip_mm}/mm
+                    Precipitation: {data.precip}/mm
                   </span>
                   <span className="info humidity">
-                    Humidity: {current.humidity}%
+                    Humidity: {data.humidity}%
                   </span>
                   <span className="info wind">
-                    Wind: {Math.round(current.wind_kph)}km/h
+                    Wind: {Math.round(data.wind)}km/h
                   </span>
                 </div>
               </div>
             </div>
             <div className="content-right">
-              {data.location ? (
-                <p className="city">{data.location.name}</p>
-              ) : null}
+              <p className="city">{data.city}</p>
               <div className="last-updated">
-                <span className="weekday">{weekday}</span>
-                <span>{currentDate}</span>
+                <span className="weekday">{data.weekday}</span>
+                <span>{data.date}</span>
               </div>
               <div className="current">
-                <img className="img-weather" src={currentCondition.icon} />
-                <p>{currentCondition.text}</p>
+                <img className="img-weather" src={data.icon} alt={data.code} />
+                <p>{data.currentCondition}</p>
               </div>
             </div>
           </div>
@@ -129,7 +131,7 @@ const App = () => {
     <div
       className="container"
       style={
-        current.is_day === 0
+        data.isDay === 0
           ? {
               backgroundImage: `linear-gradient(
             to bottom,
@@ -146,6 +148,7 @@ const App = () => {
             }
       }
     >
+      {/* <CurrentWeather weatherData={data} /> */}
       <SearchBar onSubmit={onSearchSubmit} />
       {!error ? getContent() : getErrorView()}
     </div>
