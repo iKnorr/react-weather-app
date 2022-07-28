@@ -1,38 +1,101 @@
-.App {
+.container {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* width: 50rem; */
+  /* max-width: 700px; */
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  /* margin: 0 2rem; */
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.spinner {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  animation: loading 2s linear infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
+@keyframes loading {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  0% {
+    transform: rotate(-360deg);
   }
+}
+
+.error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: white;
+  text-align: center;
+  margin: 1rem;
+}
+
+.city {
+  font-size: 3rem;
+}
+
+.temperature {
+  font-size: 8rem;
+}
+
+.content-right {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  text-align: end;
+}
+
+.content-left {
+  display: flex;
+  text-align: start;
+  /* margin-right: 6rem; */
+}
+
+.weekday {
+  margin-right: 0.3rem;
+}
+
+.info-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+.info {
+  margin: 0.3rem 0;
+}
+
+.current {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.6rem;
+  margin-top: 0.7rem;
+}
+
+.img-weather {
+  margin: 0.6rem;
 }

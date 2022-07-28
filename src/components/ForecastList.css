@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  justify-content: space-around;
+  background-color: #02173fb3;
+  width: 100%;
+}
+
+.daily {
+  text-align: center;
+  margin: 1rem 1rem;
+  /* padding: 2rem 4rem;
+  border-radius: 10px; */
+}
+
+.temp-day {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.list span {
+  margin: 0.5rem;
+}
+
+.temp.min {
+  color: #ccc;
+}
