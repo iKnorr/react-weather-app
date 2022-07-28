@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from './components/SearchBar';
 import ForecastList from './components/ForecastList';
-// import axios from 'axios';
 import api from './api';
 import dayImage from './images/day2.jpg';
 import nightImage from './images/night3.jpg';
 import { ImSpinner2 } from 'react-icons/im';
 import './App.css';
-import axios from 'axios';
-
-//openweathermap
-const APIkey = '4739904bd0e17a0b10ab5e88b48f19b7';
-
-//weatherapi
-// const APIkey = 'a163d19271bb46faa76220341221907';
 
 const weekdays = [
   'Sunday',
