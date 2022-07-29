@@ -13,7 +13,7 @@ const ForecastList = props => {
     return (
       <div key={data.date_epoch} className="daily">
         <h3>{weekday(data.date)}</h3>
-        <img src={data.day.condition.icon} />
+        <img src={data.day.condition.icon} alt={data.day.code} />
         <div className="temps-day">
           <span className="temp">{Math.round(data.day.maxtemp_c)}°</span>
           <span className="temp min">{Math.round(data.day.mintemp_c)}°</span>
