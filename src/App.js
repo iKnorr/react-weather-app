@@ -23,34 +23,34 @@ const App = () => {
   const [forecastData, setForecastData] = useState([]);
   const [error, setError] = useState(null);
 
-  const settingState = response => {
+  const settingState = data => {
     setData({
-      city: response.location.name,
-      country: response.location.country,
-      temp: response.current.temp_c,
-      feelslike: response.current.feelslike_c,
-      humidity: response.current.humidity,
-      precip: response.current.precip_mm,
-      wind: response.current.wind_kph,
-      date: new Date(response.current.last_updated)
+      city: data.location.name,
+      country: data.location.country,
+      temp: data.current.temp_c,
+      feelslike: data.current.feelslike_c,
+      humidity: data.current.humidity,
+      precip: data.current.precip_mm,
+      wind: data.current.wind_kph,
+      date: new Date(data.current.last_updated)
         .toLocaleTimeString()
         .slice(0, 5),
-      currentCondition: response.current.condition.text,
-      icon: response.current.condition.icon,
-      code: response.current.condition.code,
-      weekday: weekdays[new Date(response.current.last_updated).getDay()],
-      isDay: response.current.is_day,
+      currentCondition: data.current.condition.text,
+      icon: data.current.condition.icon,
+      code: data.current.condition.code,
+      weekday: weekdays[new Date(data.current.last_updated).getDay()],
+      isDay: data.current.is_day,
     });
-    setForecastData(response.forecast.forecastday);
+    setForecastData(data.forecast.forecastday);
   };
 
   useEffect(() => {
     try {
       const localWeather = async () => {
-        const responseIP = await api.get(`/ip.json?&q=auto:ip`);
-        const response = await api.get(
-          `/forecast.json?&q=${responseIP.data.city}&days=3`
-        );
+        const { data } = await api.get(`/ip.json?&q=auto:ip`);
+
+        const response = await api.get(`/forecast.json?&q=${data.city}&days=3`);
+
         settingState(response.data);
       };
       localWeather();
@@ -61,9 +61,9 @@ const App = () => {
 
   const onSearchSubmit = async loc => {
     try {
-      const response = await api.get(`/forecast.json?&q=${loc}&days=3`);
-      console.log(response.data);
-      settingState(response.data);
+      const { data } = await api.get(`/forecast.json?&q=${loc}&days=3`);
+      console.log(data);
+      settingState(data);
       setError(null);
     } catch (err) {
       setError(err);
