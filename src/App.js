@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SearchBar from './components/SearchBar';
 import ForecastList from './components/ForecastList';
 import api from './api';
-import dayImage from './images/day2.jpg';
-import nightImage from './images/night3.jpg';
+import dayImage from './images/day.jpg';
+import nightImage from './images/night.jpg';
 import { ImSpinner2 } from 'react-icons/im';
 
 import './App.css';
@@ -151,7 +151,6 @@ const App = () => {
             }
       }
     >
-      {/* <CurrentWeather weatherData={data} /> */}
       <SearchBar onSubmit={onSearchSubmit} />
       {!error ? getContent() : getErrorView()}
     </div>

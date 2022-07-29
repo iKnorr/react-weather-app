@@ -12,38 +12,7 @@ body,
 }
 
 body {
-  /* display: grid;
-  place-items: center; */
-  /* background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-    url('images/mountain.jpg'); */
-  /* background-repeat: none; */
-  /* background-size: cover;
-  background-position: center;
-  background-attachment: fixed; */
   color: white;
-  /* height: 100vh; */
   font-family: 'Roboto Mono', monospace;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.bg-day {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-    url('images/mountain.jpg');
-}
-
-.bg-night {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-    url('images/night.jpg');
 }
