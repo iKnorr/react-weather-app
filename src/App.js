@@ -95,7 +95,10 @@ const App = () => {
               </div>
             </div>
             <div className="content-right">
-              <p className="city">{data.city}</p>
+              <div className="city-country">
+                <p className="city">{data.city},</p>
+                <p className="country">{data.country}</p>
+              </div>
               <div className="last-updated">
                 <span className="weekday">{data.weekday}</span>
                 <span>{data.date}</span>

@@ -51,8 +51,18 @@
   margin: 2rem;
 }
 
+.city-country {
+  display: flex;
+  align-items: baseline;
+  justify-content: end;
+}
+
 .city {
   font-size: 3rem;
+}
+
+.country {
+  font-size: 2rem;
 }
 
 .temperature {
