@@ -5,7 +5,7 @@ import api from './api';
 import dayImage from './images/day2.jpg';
 import nightImage from './images/night3.jpg';
 import { ImSpinner2 } from 'react-icons/im';
-// import CurrentWeather from './components/CurrentWeather';
+
 import './App.css';
 
 const weekdays = [
