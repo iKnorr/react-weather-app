@@ -1,7 +1,7 @@
 .container {
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -48,40 +48,11 @@
   margin: 2rem;
 }
 
-.city-country {
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-end;
-}
-
-.city {
-  font-size: 3rem;
-}
-
-.country {
-  font-size: 2rem;
-}
-
-.temperature {
-  font-size: 8rem;
-}
-
-.content-right {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  text-align: end;
-  margin-top: 1.5rem;
-}
-
+/* Content left */
 .content-left {
   display: flex;
   text-align: start;
   /* margin-right: 6rem; */
-}
-
-.weekday {
-  margin-right: 0.3rem;
 }
 
 .info-wrapper {
@@ -96,7 +67,43 @@
   margin: 0.3rem 0;
 }
 
-.current {
+.temperature {
+  font-size: 8rem;
+}
+
+/* Content right */
+.content-right {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  text-align: end;
+  margin-top: 1.5rem;
+}
+
+.city-country {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.city {
+  font-size: 3rem;
+}
+
+.country {
+  font-size: 2rem;
+}
+
+.weekday {
+  margin-right: 0.3rem;
+}
+
+.img-weather {
+  margin: 0.6rem;
+}
+
+.current-condition {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -104,6 +111,47 @@
   margin-top: 0.7rem;
 }
 
-.img-weather {
-  margin: 0.6rem;
+/* Media Queries */
+@media only screen and (max-width: 700px) {
+  span {
+    font-size: 0.9rem;
+  }
+
+  .wrapper {
+    flex-wrap: wrap;
+    margin: 0 2rem;
+  }
+
+  .temperature {
+    font-size: 6rem;
+  }
+
+  .info-wrapper {
+    margin: 0;
+  }
+
+  .content-right {
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  .city-country {
+    justify-content: flex-start;
+  }
+
+  .city {
+    font-size: 2rem;
+  }
+
+  .img-weather {
+    margin: 0;
+  }
+
+  .current-condition {
+    justify-content: flex-start;
+  }
+
+  .last-updated {
+    margin-top: 0.5rem;
+  }
 }
