@@ -27,11 +27,11 @@ const App = () => {
     setData({
       city: data.location.name,
       country: data.location.country,
-      temp: data.current.temp_c,
-      feelslike: data.current.feelslike_c,
-      humidity: data.current.humidity,
-      precip: data.current.precip_mm,
-      wind: data.current.wind_kph,
+      temp: `${Math.round(data.current.temp_c)}°C`,
+      feelslike: `Feels like: ${Math.round(data.current.feelslike_c)}°C`,
+      humidity: `Humidity: ${data.current.humidity}%`,
+      precip: `Precipitation: ${data.current.precip_mm}/mm`,
+      wind: `Wind: ${Math.round(data.current.wind_kph)}km/h`,
       date: new Date(data.current.last_updated)
         .toLocaleTimeString()
         .slice(0, 5),
@@ -77,20 +77,12 @@ const App = () => {
           <div className="wrapper">
             <div className="content-left">
               <div>
-                <h1 className="temperature">{Math.round(data.temp)}°C</h1>
+                <h1 className="temperature">{data.temp}</h1>
                 <div className="info-wrapper">
-                  <span className="info feels-like">
-                    Feels like: {Math.round(data.feelslike)}°C
-                  </span>
-                  <span className="info cloud">
-                    Precipitation: {data.precip}/mm
-                  </span>
-                  <span className="info humidity">
-                    Humidity: {data.humidity}%
-                  </span>
-                  <span className="info wind">
-                    Wind: {Math.round(data.wind)}km/h
-                  </span>
+                  <span className="info feels-like">{data.feelslike}</span>
+                  <span className="info cloud">{data.precip}</span>
+                  <span className="info humidity">{data.humidity}</span>
+                  <span className="info wind">{data.wind}</span>
                 </div>
               </div>
             </div>
