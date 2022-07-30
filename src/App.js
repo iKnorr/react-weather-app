@@ -96,8 +96,8 @@ const App = () => {
                 <span>{data.date}</span>
               </div>
               <div className="current-condition">
-                <img className="img-weather" src={data.icon} alt={data.code} />
                 <p>{data.currentCondition}</p>
+                <img className="img-weather" src={data.icon} alt={data.code} />
               </div>
             </div>
           </div>

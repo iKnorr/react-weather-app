@@ -99,10 +99,6 @@
   margin-right: 0.3rem;
 }
 
-.img-weather {
-  margin: 0.6rem;
-}
-
 .current-condition {
   display: flex;
   justify-content: flex-end;
@@ -118,7 +114,7 @@
   }
 
   .wrapper {
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     margin: 0 2rem;
   }
 
@@ -141,10 +137,6 @@
 
   .city {
     font-size: 2rem;
-  }
-
-  .img-weather {
-    margin: 0;
   }
 
   .current-condition {
